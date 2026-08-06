@@ -1,0 +1,39 @@
+name: Build Android APK
+
+# Runs automatically on every push to main, and can also be triggered
+# manually from the Actions tab (the "Run workflow" button).
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Recreate .env from GitHub Secrets
+        # .env is gitignored (never committed) - this writes it fresh
+        # inside the runner, using values from repo Settings > Secrets
+        # and variables > Actions, so the real keys never touch git history.
+        run: |
+          cat <<EOF > .env
+          OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}
+          SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          EOF
+
+      - name: Build with Buildozer
+        id: buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+          buildozer_version: stable
+
+      - name: Upload the built APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: jarvis-debug-apk
+          path: ${{ steps.buildozer.outputs.filename }}

@@ -1,0 +1,12 @@
+requests
+psutil
+keyboard
+pygetwindow
+SpeechRecognition
+pyttsx3
+beautifulsoup4
+spotipy
+PyQt5
+pywin32
+python-dotenv
+PyAudio

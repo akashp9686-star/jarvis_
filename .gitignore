@@ -1,0 +1,10 @@
+.env
+_env
+.buildozer/
+bin/
+*.apk
+__pycache__/
+*.pyc
+.venv/
+venv/
+jarvis-buildenv/
