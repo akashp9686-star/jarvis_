@@ -47,7 +47,24 @@ jobs:
         run: |
           yes | buildozer android debug
 
+      # Runs ONLY if the build step above failed. Uploads the full,
+      # guaranteed-complete .buildozer log directory as a downloadable
+      # zip - no more scrolling through a giant page or fighting a
+      # browser that chokes on huge log text. Download it from this
+      # run's Artifacts section afterward and open the .txt files
+      # directly in a text editor.
+      - name: Upload full build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: buildozer-failure-logs
+          path: |
+            .buildozer/android/platform/build-*/build.log
+            .buildozer/logs/
+          if-no-files-found: warn
+
       - name: Upload the built APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: jarvis-debug-apk
