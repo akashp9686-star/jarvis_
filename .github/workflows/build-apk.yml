@@ -39,6 +39,16 @@ jobs:
           sudo apt-get install -y git zip unzip openjdk-17-jdk autoconf \
             libtool pkg-config zlib1g-dev cmake libffi-dev libssl-dev
 
+      - name: Set up JDK 17 for Gradle
+        # Modern Android Gradle Plugin (bundled by python-for-android)
+        # requires Java 17. Without this, JAVA_HOME silently pointed at
+        # the runner's default Java 11 instead, which fails at the final
+        # "gradlew assembleDebug" packaging step.
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Install pinned buildozer / cython
         # (python-for-android itself is pinned separately via
         # p4a.branch in buildozer.spec - buildozer always git-clones
