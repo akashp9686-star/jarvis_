@@ -9,7 +9,7 @@ version = 0.1
 
 # jarvis_core needs requests, beautifulsoup4, spotipy (which needs
 # urllib3/oauthlib). Kivy is required for the UI. plyer gives TTS.
-requirements = python3,kivy,plyer,requests,beautifulsoup4,spotipy,pyjnius
+requirements = python3==3.11.9,kivy,plyer,requests,beautifulsoup4,typing_extensions,spotipy,pyjnius
 
 orientation = portrait
 fullscreen = 0
