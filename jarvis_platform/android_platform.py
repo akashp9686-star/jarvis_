@@ -41,7 +41,12 @@ except ImportError:
 
 
 class AndroidPlatform(JarvisPlatform):
-    def __init__(self):
+    def __init__(self, gui_window=None):
+        # gui_window is set by phone_gui.py's run_gui() once the HUD
+        # window exists, the same convention windows_platform.py uses -
+        # speak() below writes into it so the on-screen status line and
+        # log actually update instead of sitting frozen.
+        self.gui_window = gui_window
         if ON_ANDROID:
             self.PythonActivity = autoclass("org.kivy.android.PythonActivity")
             self.activity = self.PythonActivity.mActivity
@@ -59,6 +64,8 @@ class AndroidPlatform(JarvisPlatform):
         if not text:
             return
         print(f"Jarvis says: {text}")
+        if self.gui_window:
+            self.gui_window.add_message("Jarvis", text)
         try:
             from plyer import tts
             tts.speak(message=text)
