@@ -1,10 +1,8 @@
 name: Build Android APK
 
-# Runs automatically on every push to main, and can also be triggered
-# manually from the Actions tab (the "Run workflow" button).
 on:
   push:
-    branches: [ main ]
+    branches: [ master, main ]
   workflow_dispatch:
 
 jobs:
@@ -15,9 +13,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Recreate .env from GitHub Secrets
-        # .env is gitignored (never committed) - this writes it fresh
-        # inside the runner, using values from repo Settings > Secrets
-        # and variables > Actions, so the real keys never touch git history.
         run: |
           cat <<EOF > .env
           OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}
