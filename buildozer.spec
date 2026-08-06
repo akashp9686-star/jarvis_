@@ -22,7 +22,10 @@ android.permissions = INTERNET, RECORD_AUDIO, CALL_PHONE, READ_PHONE_STATE
 
 android.api = 33
 android.minapi = 24
-android.archs = arm64-v8a, armeabi-v7a
+# arm64-v8a only - virtually every phone since ~2017 is 64-bit, and
+# building armeabi-v7a (32-bit) too hits a known python-for-android
+# linker issue ("unable to find library -luuid") on this toolchain.
+android.archs = arm64-v8a
 
 # Pin the exact python-for-android version buildozer clones. Without this,
 # buildozer always git-clones p4a's bleeding-edge "master" branch, which
