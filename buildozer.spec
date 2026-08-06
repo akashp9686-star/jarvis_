@@ -29,7 +29,7 @@ android.archs = arm64-v8a, armeabi-v7a
 # currently defaults to a Python 3.14 hostpython recipe that conflicts
 # with the 3.11 Python this build otherwise uses - causing:
 #   "python3 should have same version as hostpython3, 3.11.9 != 3.14.2"
-p4a.branch = 2024.1.21
+p4a.branch = v2024.01.21
 
 # Required so power_action() can call DevicePolicyManager.lockNow() once
 # the user enables Jarvis as a Device Administrator in Settings.
