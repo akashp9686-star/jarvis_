@@ -39,10 +39,14 @@ jobs:
           sudo apt-get install -y git zip unzip openjdk-17-jdk autoconf \
             libtool pkg-config zlib1g-dev cmake libffi-dev libssl-dev
 
-      - name: Install pinned buildozer / python-for-android / cython
+      - name: Install pinned buildozer / cython
+        # (python-for-android itself is pinned separately via
+        # p4a.branch in buildozer.spec - buildozer always git-clones
+        # its own copy of p4a, ignoring any pip-installed version,
+        # so pinning it here would do nothing.)
         run: |
           pip install --upgrade pip
-          pip install buildozer==1.5.0 cython==0.29.36 python-for-android==2024.1.21
+          pip install buildozer==1.5.0 cython==0.29.36
 
       - name: Build with Buildozer
         run: |
