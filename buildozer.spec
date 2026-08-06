@@ -4,6 +4,7 @@ package.name = jarvis
 package.domain = org.aakashp
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
+source.include_patterns = .env
 version = 0.1
 
 # jarvis_core needs requests, beautifulsoup4, spotipy (which needs
