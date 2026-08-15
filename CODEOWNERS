@@ -3,14 +3,13 @@
 # specific files or folders in this repo are changed.
 #
 # HOW TO USE:
-# 1. Replace @your-username below with your actual GitHub username
-#    (or use a team, e.g. @your-org/your-team).
-# 2. Adjust the path patterns to match your repo's structure.
-# 3. Place this file at ONE of these locations in your repo:
+# 1. Place this file at ONE of these locations in your repo:
 #      - CODEOWNERS          (repo root)
 #      - .github/CODEOWNERS
 #      - docs/CODEOWNERS
-# 4. Commit and push it to your default branch (e.g. main).
+# 2. Commit and push it to your default branch.
+# 3. Repeat for each repo (jarvis_ and kindheat-) since CODEOWNERS
+#    is set per-repository, not account-wide.
 #
 # SYNTAX NOTES:
 # - Order matters: later matching rules override earlier ones.
@@ -18,13 +17,4 @@
 # - You can list multiple owners per line, separated by spaces.
 
 # Default owner for everything in the repo
-*       @your-username
-
-# Example: a specific owner for documentation
-# /docs/  @your-username
-
-# Example: a specific owner for a config file
-# /package.json  @your-username
-
-# Example: a team as owner for a folder
-# /src/  @your-org/your-team
+*       @akashp9686-star
