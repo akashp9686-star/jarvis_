@@ -1,0 +1,20 @@
+# CODEOWNERS
+# This file defines who is automatically requested for review when
+# specific files or folders in this repo are changed.
+#
+# HOW TO USE:
+# 1. Place this file at ONE of these locations in your repo:
+#      - CODEOWNERS          (repo root)
+#      - .github/CODEOWNERS
+#      - docs/CODEOWNERS
+# 2. Commit and push it to your default branch.
+# 3. Repeat for each repo (jarvis_ and kindheat-) since CODEOWNERS
+#    is set per-repository, not account-wide.
+#
+# SYNTAX NOTES:
+# - Order matters: later matching rules override earlier ones.
+# - Patterns work like .gitignore patterns.
+# - You can list multiple owners per line, separated by spaces.
+
+# Default owner for everything in the repo
+*       @akashp9686-star
